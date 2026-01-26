@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+  padding: 0px;
+  margin: 0px;
+  font-family: "Nunito", sans-serif;
+}
+
+h1{
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+h2{
+    color:hsl(14, 86%, 42%);
+    font-weight: 800;
+}
+
+body{
+  background-color: hsl(13, 31%, 94%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.desserts{
+  width: 800px;
+  margin-top: 30px;
+}
+
+.cart{
+  padding: 20px;
+  width: 300px;
+  margin-top: 30px;
+  height: 100%;
+  background-color: hsl(20, 50%, 98%);
+  border-radius: 10px;
+}
+
+.conteudo > img{
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;  
+}
+
+.conteudo{
+  padding-right: 15px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.containers{
+  display: flex;
+}
+
+.icon-cart{
+  width: 20px;
+  margin-right: 5px;
+}
+
+.btn-cart{
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 20px;
+  border: 1px solid hsl(14, 25%, 72%);
+  display: flex;
+  align-items: center;
+}
+
+.div-btn{
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.category-name{
+  color: grey;
+}
+
+.title{
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 0;
+}
+
+.price{
+  color: grey;
+}
+
+#img-cart{
+  text-align: center;
+}
+
+.div{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.text{
+  text-align: center;
+  color: grey;
+  margin-top: 10px;
+} 
+
