@@ -105,9 +105,10 @@ body{
 
 .text{
   text-align: center;
-  color: hsl(14, 25%, 72%);
+  color: hsl(7, 20%, 60%);
   margin-top: 10px;
   margin-bottom: 10px;
+  font-weight: 600;
 } 
 
 /* ## Colors
