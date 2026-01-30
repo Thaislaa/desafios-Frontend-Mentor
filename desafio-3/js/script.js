@@ -85,6 +85,8 @@ const num = document.querySelectorAll(".num");
 let contadorGeral = 0;
 let cartList = []
 
+const cartDiv = document.querySelector(".div-items-cart");
+
 function verificaCart(contadorGeral) {
   if (contadorGeral > 0) {
     imgCart.style.display = "none";
@@ -128,6 +130,36 @@ function removeToCart(itemCart) {
   }
 }
 
+function addCartInfos() {
+  cartDiv.innerHTML = "";
+  cartList.forEach((item) => {
+    const divCart = document.createElement("div");
+    const divTitle = document.createElement("div");
+    const divInfos = document.createElement("div");
+
+    divInfos.classList.add("infos-cart");
+
+    const pTitle = document.createElement("p");
+    pTitle.textContent = item.title;
+    const pQuantity = document.createElement("p");
+    pQuantity.textContent = `${item.quantity}x `;
+    const pPrice = document.createElement("p");
+    pPrice.textContent = `$${item.price.toFixed(2)} `;
+    const pTotal = document.createElement("p");
+    pTotal.textContent = `$${(item.quantity * item.price).toFixed(2)} `;
+
+    divTitle.appendChild(pTitle);
+    divInfos.appendChild(pQuantity);
+    divInfos.appendChild(pPrice);
+    divInfos.appendChild(pTotal);
+
+    divCart.appendChild(divTitle);
+    divCart.appendChild(divInfos);
+
+    cartDiv.appendChild(divCart);
+  });
+}
+
 btnCart.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     desserts[index].quantity = 1;
@@ -141,6 +173,7 @@ btnCart.forEach((btn, index) => {
 
     verificaCart(contadorGeral);
     addToCart(desserts[index])
+    addCartInfos();
   });
 });
 
@@ -152,6 +185,7 @@ iconAdd.forEach((btn, index) => {
 
     num[index].textContent = `${desserts[index].quantity}`;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
+    addCartInfos();
   });
 });
 
@@ -171,6 +205,7 @@ iconDesc.forEach((btn, index) => {
 
     if (contadorGeral < 0) contadorGeral = 0;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
-    removeToCart(desserts[index])
+    removeToCart(desserts[index]);
+    addCartInfos();
   });
 });
