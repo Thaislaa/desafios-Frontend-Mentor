@@ -4,6 +4,7 @@ const dessert = document.querySelector(".desserts");
 
 let contadorVoltas = 0;
 let container;
+
 desserts.forEach((item) => {
 
   if (contadorVoltas % 3 === 0) {
@@ -82,7 +83,7 @@ const cartText = document.querySelector(".text");
 const num = document.querySelectorAll(".num");
 
 let contadorGeral = 0;
-let contadores = [];
+let cartList = []
 
 function verificaCart(contadorGeral) {
   if (contadorGeral > 0) {
@@ -95,47 +96,81 @@ function verificaCart(contadorGeral) {
   }
 }
 
+function addToCart(itemCart) {
+  const found = cartList.find((item) => item.title === itemCart.title);
+  const indexFound = cartList.findIndex((item) => item.title === itemCart.title);
+
+  if (!found) {
+    cartList.push({
+      category: itemCart.category,
+      title: itemCart.title,
+      price: itemCart.price,
+      image: itemCart.image,
+      quantity: 1
+    });
+  } else {
+    const item = desserts.find((item) => found.title === item.title);
+    cartList[indexFound].quantity = item.quantity;
+  }
+
+}
+
+function removeToCart(itemCart) {
+  const found = cartList.find(item => item.title === itemCart.title)
+  const indexFound = cartList.findIndex(item => item.title === itemCart.title);
+
+  if (found.quantity === 1) {
+    cartList.splice(indexFound, 1);
+  } else {
+    found.quantity--;
+    const item = desserts.find((item) => found.title === item.title);
+    cartList[indexFound].quantity = item.quantity;
+  }
+}
+
 btnCart.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    contadores[index] = 1;
+    desserts[index].quantity = 1;
     contadorGeral++;
 
     btn.style.display = "none";
     btnCartItems[index].style.display = "flex";
 
-    num[index].textContent = contadores[index];
+    num[index].textContent = `${desserts[index].quantity}`;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
 
     verificaCart(contadorGeral);
-
+    addToCart(desserts[index])
   });
 });
 
 iconAdd.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    contadores[index]++;
+    desserts[index].quantity++;
     contadorGeral++;
+    addToCart(desserts[index]);
 
-    num[index].textContent = contadores[index];
+    num[index].textContent = `${desserts[index].quantity}`;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
   });
 });
 
 iconDesc.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    contadores[index]--;
+    desserts[index].quantity--;
     contadorGeral--;
 
-    if (contadores[index] <= 0) {
-      contadores[index] = 0;
+    if (desserts[index].quantity <= 0) {
+      desserts[index].quantity = 0;
       btnCart[index].style.display = "flex";
       btnCartItems[index].style.display = "none";
       verificaCart(contadorGeral);
     } else {
-      num[index].textContent = contadores[index];
+      num[index].textContent = desserts[index].quantity;
     }
 
     if (contadorGeral < 0) contadorGeral = 0;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
+    removeToCart(desserts[index])
   });
 });
