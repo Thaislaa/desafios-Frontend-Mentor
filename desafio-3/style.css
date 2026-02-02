@@ -1,64 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
-* {
+*{
   padding: 0px;
   margin: 0px;
   font-family: "Red Hat Text", sans-serif;
 }
 
-h1 {
+h1{
   font-weight: 900;
   margin-bottom: 20px;
 }
 
-h2 {
-  color: hsl(14, 86%, 42%);
-  font-weight: 800;
+h2{
+    color: hsl(14, 86%, 42%);
+    font-weight: 800;
 }
 
-body {
+body{
   background-color: hsl(13, 31%, 94%);
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.desserts {
+.desserts{
   width: 800px;
   margin-top: 30px;
 }
 
 .cart {
   padding: 20px;
-  width: 300px;
-  margin-top: 30px;
-  height: 240px;
   background-color: hsl(20, 50%, 98%);
   border-radius: 10px;
+  height: 320px;       
+  width: 280px;
+  margin-top: 30px; 
 }
 
-.conteudo>img {
+.div-items-cart {
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.conteudo > img{
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
 }
 
-.conteudo {
+.conteudo{
   padding-right: 15px;
   position: relative;
   margin-bottom: 20px;
 }
 
-.containers {
+.containers{
   display: flex;
 }
 
-.icon-cart {
+.icon-cart{
   width: 20px;
   margin-right: 5px;
 }
 
-.btn-cart {
+.btn-cart{
   width: 150px;
   height: 40px;
   display: flex;
@@ -72,65 +77,65 @@ body {
   flex-direction: row-reverse;
 }
 
-.div-btn {
+.div-btn{
   position: absolute;
   bottom: 85px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.category-name {
+.category-name{
   color: #807b73;
 }
 
-.title {
+.title{
   font-size: 18px;
   font-weight: 700;
   padding: 5px 0;
 }
 
-.price {
+.price{
   color: hsl(14, 86%, 42%);
   font-weight: 600;
 }
 
-#img-cart {
+#img-cart{
   text-align: center;
   width: 150px;
 }
 
-
-.div {
+.div{
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 10px;
   flex-direction: column;
-  align-items: center;
+  height: 250px;
 }
 
-.text {
+.text{
   text-align: center;
   color: hsl(7, 20%, 60%);
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: 600;
-}
+} 
 
-.icon-add {
+.icon-add{
   width: 12px;
   margin-left: 20px;
   margin-right: 20px;
   height: 100%;
 }
 
-.icon-desc {
+.icon-desc{
   width: 12px;
   margin-left: 20px;
   margin-right: 20px;
   height: 100%;
 }
 
-.btn-cart-items {
+.btn-cart-items{
   width: 150px;
   height: 40px;
   display: flex;
@@ -146,11 +151,41 @@ body {
 }
 
 .p-title {
-  color: red;
-  text-align: rigt;
+  font-weight: 600;
+  padding-top: 10px;
+  font-size: 14px;
 }
 
-.infos-cart {
+.p-quantity{
+  font-size: 14px;
+  padding-top: 5px;
+  padding-right: 10px;
+  color: hsl(14, 86%, 42%);
+  font-weight: 600;
+}
+
+.p-price{
+  font-size: 14px;
+  padding-top: 5px;
+  padding-right: 10px;
+  color: #373636;
+}
+
+.p-total{
+  font-size: 14px;
+  padding-top: 5px;
+  padding-right: 10px;
+  color: #2b2929;
+  font-weight: 500;
+}
+
+.hr{
+  margin: 10px 0;
+  border-color: white;
+  margin-right: 10px;
+}
+
+.infos-cart{
   display: flex;
   flex-direction: row;
 }
