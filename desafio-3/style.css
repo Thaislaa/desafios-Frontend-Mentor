@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
-*{
+* {
   padding: 0px;
   margin: 0px;
   font-family: "Red Hat Text", sans-serif;
 }
 
-h1{
+h1 {
   font-weight: 900;
   margin-bottom: 20px;
 }
 
-h2{
-    color: hsl(14, 86%, 42%);
-    font-weight: 800;
+h2 {
+  color: hsl(14, 86%, 42%);
+  font-weight: 800;
 }
 
-body{
+body {
   background-color: hsl(13, 31%, 94%);
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.desserts{
+.desserts {
   width: 800px;
   margin-top: 30px;
 }
@@ -32,38 +32,38 @@ body{
   padding: 20px;
   background-color: hsl(20, 50%, 98%);
   border-radius: 10px;
-  height: 320px;       
-  width: 280px;
-  margin-top: 30px; 
+  height: 400px;
+  width: 300px;
+  margin-top: 30px;
 }
 
 .div-items-cart {
-  max-height: 80%;
+  height: 80%;
   overflow-y: auto;
 }
 
-.conteudo > img{
+.conteudo>img {
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
 }
 
-.conteudo{
+.conteudo {
   padding-right: 15px;
   position: relative;
   margin-bottom: 20px;
 }
 
-.containers{
+.containers {
   display: flex;
 }
 
-.icon-cart{
+.icon-cart {
   width: 20px;
   margin-right: 5px;
 }
 
-.btn-cart{
+.btn-cart {
   width: 150px;
   height: 40px;
   display: flex;
@@ -77,34 +77,34 @@ body{
   flex-direction: row-reverse;
 }
 
-.div-btn{
+.div-btn {
   position: absolute;
   bottom: 85px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.category-name{
+.category-name {
   color: #807b73;
 }
 
-.title{
+.title {
   font-size: 18px;
   font-weight: 700;
   padding: 5px 0;
 }
 
-.price{
+.price {
   color: hsl(14, 86%, 42%);
   font-weight: 600;
 }
 
-#img-cart{
+#img-cart {
   text-align: center;
   width: 150px;
 }
 
-.div{
+.div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,29 +113,29 @@ body{
   height: 250px;
 }
 
-.text{
+.text {
   text-align: center;
   color: hsl(7, 20%, 60%);
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: 600;
-} 
+}
 
-.icon-add{
+.icon-add {
   width: 12px;
   margin-left: 20px;
   margin-right: 20px;
   height: 100%;
 }
 
-.icon-desc{
+.icon-desc {
   width: 12px;
   margin-left: 20px;
   margin-right: 20px;
   height: 100%;
 }
 
-.btn-cart-items{
+.btn-cart-items {
   width: 150px;
   height: 40px;
   display: flex;
@@ -156,7 +156,7 @@ body{
   font-size: 14px;
 }
 
-.p-quantity{
+.p-quantity {
   font-size: 14px;
   padding-top: 5px;
   padding-right: 10px;
@@ -164,14 +164,14 @@ body{
   font-weight: 600;
 }
 
-.p-price{
+.p-price {
   font-size: 14px;
   padding-top: 5px;
   padding-right: 10px;
   color: #373636;
 }
 
-.p-total{
+.p-total {
   font-size: 14px;
   padding-top: 5px;
   padding-right: 10px;
@@ -179,13 +179,30 @@ body{
   font-weight: 500;
 }
 
-.hr{
+.hr {
   margin: 10px 0;
   border-color: white;
   margin-right: 10px;
 }
 
-.infos-cart{
+.infos-cart {
   display: flex;
   flex-direction: row;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+#order {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+}
+
+#total {
+  font-size: 24px;
+  font-weight: 700;
 }

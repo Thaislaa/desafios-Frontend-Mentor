@@ -5,66 +5,66 @@ const dessert = document.querySelector(".desserts");
 let contadorVoltas = 0;
 let container;
 
-desserts.forEach((item) => {  
-  if(contadorVoltas % 3 === 0){
+desserts.forEach((item) => {
+  if (contadorVoltas % 3 === 0) {
     container = document.createElement("div");
     container.classList.add("containers");
     dessert.appendChild(container);
   }
-  
+
   const conteudo = document.createElement("div");
   conteudo.classList.add("conteudo");
   container.appendChild(conteudo);
-  
+
   const img = document.createElement("img");
   img.src = item.image;
   conteudo.appendChild(img);
-  
+
   const divBtn = document.createElement("div");
   divBtn.classList.add("div-btn");
   conteudo.appendChild(divBtn);
-  
+
   const btn = document.createElement("button");
   btn.classList.add("btn-cart");
   btn.textContent = "Add to Cart";
   divBtn.appendChild(btn);
-  
+
   const imgCart = document.createElement("img");
   imgCart.src = "./images/icon-add-to-cart.svg";
   imgCart.classList.add("icon-cart");
   btn.appendChild(imgCart);
-  
+
   const btnItems = document.createElement("button");
   btnItems.classList.add("btn-cart-items");
   btnItems.style.display = "none";
   divBtn.appendChild(btnItems);
-  
-  
+
+
   const imgDesc = document.createElement("img");
   imgDesc.src = "./images/icon-decrement-quantity.svg";
   imgDesc.classList.add("icon-desc");
   btnItems.appendChild(imgDesc);
-  
+
   const p = document.createElement("p");
   p.classList.add("num");
-  p.textContent="1"
+  p.textContent = "1"
   btnItems.appendChild(p);
-  
+
   const imgAdd = document.createElement("img");
   imgAdd.src = "./images/icon-increment-quantity.svg";
   imgAdd.classList.add("icon-add");
   btnItems.appendChild(imgAdd);
-  
+
   const pCategory = document.createElement("p");
   pCategory.textContent = item.category;
   pCategory.classList.add("category-name");
   conteudo.appendChild(pCategory);
-  
+
   const title = document.createElement("p");
   title.textContent = item.title;
   title.classList.add("title");
   conteudo.appendChild(title);
-  
+
   const price = document.createElement("p");
   price.textContent = `$${item.price.toFixed(2)}`;
   price.classList.add("price");
@@ -80,7 +80,11 @@ const iconDesc = document.querySelectorAll(".icon-desc");
 const tot = document.querySelectorAll(".tot");
 const imgCart = document.querySelector("#img-cart");
 const cartText = document.querySelector(".text");
+const div = document.querySelector(".div");
 const num = document.querySelectorAll(".num");
+const divOrderTotal = document.createElement("div");
+divOrderTotal.classList.add("order-total");
+const divItemsCart = document.querySelector(".div-items-cart");
 
 let contadorGeral = 0;
 let cartList = []
@@ -91,10 +95,16 @@ function verificaCart(contadorGeral) {
   if (contadorGeral > 0) {
     imgCart.style.display = "none";
     cartText.style.display = "none";
+    div.style.display = "none";
+    divOrderTotal.style.display = "flex";
+    divItemsCart.style.display = "flex";
   }
   else if (contadorGeral === 0) {
     imgCart.style.display = "flex";
     cartText.style.display = "block";
+    div.style.display = "flex";
+    divOrderTotal.style.display = "none";
+    divItemsCart.style.display = "none";
   }
 }
 
@@ -130,11 +140,17 @@ function removeToCart(itemCart) {
   }
 }
 
+
+
 function addCartInfos() {
   cartDiv.innerHTML = "";
+  divOrderTotal.innerHTML = "";
+
   cartList.forEach((item) => {
+    divItemsCart.style.display = "block";
+    
     const divCart = document.createElement("div");
-    divCart.classList.add ("divCart");
+    divCart.classList.add("divCart");
     const divTitle = document.createElement("div");
     const divInfos = document.createElement("div");
 
@@ -143,19 +159,19 @@ function addCartInfos() {
     const pTitle = document.createElement("p");
     pTitle.textContent = item.title;
     pTitle.classList.add("p-title");
-    
+
     const pQuantity = document.createElement("p");
     pQuantity.textContent = `${item.quantity}x `;
     pQuantity.classList.add("p-quantity")
-    
+
     const pPrice = document.createElement("p");
     pPrice.textContent = `$${item.price.toFixed(2)} `;
     pPrice.classList.add("p-price");
-    
+
     const pTotal = document.createElement("p");
     pTotal.textContent = `$${(item.quantity * item.price).toFixed(2)} `;
     pTotal.classList.add("p-total");
-    
+
     const hr = document.createElement("hr");
     hr.classList.add("hr");
 
@@ -163,20 +179,34 @@ function addCartInfos() {
     divInfos.appendChild(pQuantity);
     divInfos.appendChild(pPrice);
     divInfos.appendChild(pTotal);
-    
+
     divCart.appendChild(divTitle);
     divCart.appendChild(divInfos);
     divCart.appendChild(hr);
 
     cartDiv.appendChild(divCart);
   });
-  //const divCart = document.querySelector(".divCart");
-  //const pOrder = document.createElement("p");
-  //pOrder.textContent = "Order Total";
-  //pOrder.classList.add("p-order");
-  //divCart.appendChild(pOrder);
+
+  let cartTotal = 0;
+  cartList.forEach((item) => {
+    cartTotal = cartTotal + (item.quantity * item.price);
+  });
+  console.log(cartTotal);
   
-  //cartDiv.appendChild(divCart);
+  const cart = document.querySelector(".cart");
+
+  const pOrder = document.createElement("p");
+  pOrder.textContent = "Order Total";
+  pOrder.id = "order";
+
+  const pTotal = document.createElement("p");
+  pTotal.textContent = `$${cartTotal}`;
+  pTotal.id = "total";
+
+  divOrderTotal.appendChild(pOrder);
+  divOrderTotal.appendChild(pTotal);
+
+  cart.appendChild(divOrderTotal);
 }
 
 btnCart.forEach((btn, index) => {
