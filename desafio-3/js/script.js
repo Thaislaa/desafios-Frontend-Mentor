@@ -98,7 +98,7 @@ function verificaCart(contadorGeral) {
     cartText.style.display = "none";
     div.style.display = "none";
     divOrderTotal.style.display = "flex";
-    divItemsCart.style.display = "flex";
+    divItemsCart.style.display = "block";
     deliveryInfo.style.display = "flex";
     cartBtn.style.display = "block";
   } else if (contadorGeral === 0) {
