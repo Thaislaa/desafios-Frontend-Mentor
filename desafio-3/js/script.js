@@ -72,7 +72,6 @@ desserts.forEach((item) => {
   contadorVoltas++;
 });
 
-// ACÃO PARA OS BOTÕES
 const btnCart = document.querySelectorAll(".btn-cart");
 const btnCartItems = document.querySelectorAll(".btn-cart-items");
 const iconAdd = document.querySelectorAll(".icon-add");
@@ -85,9 +84,11 @@ const num = document.querySelectorAll(".num");
 const divOrderTotal = document.createElement("div");
 divOrderTotal.classList.add("order-total");
 const divItemsCart = document.querySelector(".div-items-cart");
+const deliveryInfo = document.querySelector(".delivery-info");
+const cartBtn = document.querySelector(".cart-btn");
 
 let contadorGeral = 0;
-let cartList = []
+let cartList = [];
 
 const cartDiv = document.querySelector(".div-items-cart");
 
@@ -98,13 +99,16 @@ function verificaCart(contadorGeral) {
     div.style.display = "none";
     divOrderTotal.style.display = "flex";
     divItemsCart.style.display = "flex";
-  }
-  else if (contadorGeral === 0) {
+    deliveryInfo.style.display = "flex";
+    cartBtn.style.display = "block";
+  } else if (contadorGeral === 0) {
     imgCart.style.display = "flex";
     cartText.style.display = "block";
     div.style.display = "flex";
     divOrderTotal.style.display = "none";
     divItemsCart.style.display = "none";
+    deliveryInfo.style.display = "none";
+    cartBtn.style.display = "none";
   }
 }
 
@@ -124,11 +128,10 @@ function addToCart(itemCart) {
     const item = desserts.find((item) => found.title === item.title);
     cartList[indexFound].quantity = item.quantity;
   }
-
 }
 
 function removeToCart(itemCart) {
-  const found = cartList.find(item => item.title === itemCart.title)
+  const found = cartList.find(item => item.title === itemCart.title);
   const indexFound = cartList.findIndex(item => item.title === itemCart.title);
 
   if (found.quantity === 1) {
@@ -140,19 +143,22 @@ function removeToCart(itemCart) {
   }
 }
 
-
-
 function addCartInfos() {
   cartDiv.innerHTML = "";
   divOrderTotal.innerHTML = "";
 
-  cartList.forEach((item) => {
+  cartList.forEach((item, index) => {
+    // Verifique se o item ainda está no carrinho (caso o índice tenha sido invalidado)
+    if (!item) return;
+
     divItemsCart.style.display = "block";
-    
+
     const divCart = document.createElement("div");
     divCart.classList.add("divCart");
     const divTitle = document.createElement("div");
     const divInfos = document.createElement("div");
+    const divItem = document.createElement("div");
+    const exitDiv = document.createElement("div");
 
     divInfos.classList.add("infos-cart");
 
@@ -162,7 +168,7 @@ function addCartInfos() {
 
     const pQuantity = document.createElement("p");
     pQuantity.textContent = `${item.quantity}x `;
-    pQuantity.classList.add("p-quantity")
+    pQuantity.classList.add("p-quantity");
 
     const pPrice = document.createElement("p");
     pPrice.textContent = `$${item.price.toFixed(2)} `;
@@ -180,19 +186,56 @@ function addCartInfos() {
     divInfos.appendChild(pPrice);
     divInfos.appendChild(pTotal);
 
-    divCart.appendChild(divTitle);
-    divCart.appendChild(divInfos);
-    divCart.appendChild(hr);
+    divItem.appendChild(divTitle);
+    divItem.appendChild(divInfos);
+
+    const exitImg = document.createElement("img");
+    exitImg.src = "https://img.icons8.com/ios/50/cancel.png";
+    exitImg.classList.add("exit-img");
+    exitDiv.appendChild(exitImg);
+
+    divCart.appendChild(exitDiv);
+    exitDiv.classList.add("exit-div");
+    divCart.appendChild(divItem);
+    divItem.classList.add("div-item");
 
     cartDiv.appendChild(divCart);
+    cartDiv.appendChild(hr);
+
+    exitImg.addEventListener("click", () => {
+      const confirm = window.confirm("Are you sure you want to delete this item?");
+      if (confirm) {
+        contadorGeral -= item.quantity;
+
+        cartList.splice(index, 1);
+
+        const foundIndex = desserts.findIndex(dessertItem => dessertItem.title === item.title);
+        if (foundIndex !== -1) {
+          desserts[foundIndex].quantity = 0;
+        }
+
+        addCartInfos();
+
+        const btnAddToCart = btnCart[foundIndex];
+        const btnItems = btnCartItems[foundIndex];
+
+        if (btnAddToCart && btnItems) {
+          btnAddToCart.style.display = "flex";
+          btnItems.style.display = "none";
+        }
+
+        tot[0].textContent = `Your Cart (${contadorGeral})`;
+
+        verificaCart(contadorGeral);
+      }
+    });
   });
 
   let cartTotal = 0;
   cartList.forEach((item) => {
-    cartTotal = cartTotal + (item.quantity * item.price);
+    cartTotal += item.quantity * item.price;
   });
-  console.log(cartTotal);
-  
+
   const cart = document.querySelector(".cart");
 
   const pOrder = document.createElement("p");
@@ -200,7 +243,7 @@ function addCartInfos() {
   pOrder.id = "order";
 
   const pTotal = document.createElement("p");
-  pTotal.textContent = `$${cartTotal}`;
+  pTotal.textContent = `$${cartTotal.toFixed(2)}`;
   pTotal.id = "total";
 
   divOrderTotal.appendChild(pOrder);
@@ -221,7 +264,7 @@ btnCart.forEach((btn, index) => {
     tot[0].textContent = `Your Cart (${contadorGeral})`;
 
     verificaCart(contadorGeral);
-    addToCart(desserts[index])
+    addToCart(desserts[index]);
     addCartInfos();
   });
 });
