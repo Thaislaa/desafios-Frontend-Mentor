@@ -190,7 +190,7 @@ function addCartInfos() {
     divItem.appendChild(divInfos);
 
     const exitImg = document.createElement("img");
-    exitImg.src = "https://img.icons8.com/ios/50/cancel.png";
+    exitImg.src = "./images/icon-remove-item.svg";
     exitImg.classList.add("exit-img");
     exitDiv.appendChild(exitImg);
 
