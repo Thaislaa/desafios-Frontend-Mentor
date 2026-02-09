@@ -39,7 +39,6 @@ desserts.forEach((item) => {
   btnItems.style.display = "none";
   divBtn.appendChild(btnItems);
 
-
   const imgDesc = document.createElement("img");
   imgDesc.src = "./images/icon-decrement-quantity.svg";
   imgDesc.classList.add("icon-desc");
@@ -47,7 +46,7 @@ desserts.forEach((item) => {
 
   const p = document.createElement("p");
   p.classList.add("num");
-  p.textContent = "1"
+  p.textContent = "1";
   btnItems.appendChild(p);
 
   const imgAdd = document.createElement("img");
@@ -69,6 +68,7 @@ desserts.forEach((item) => {
   price.textContent = `$${item.price.toFixed(2)}`;
   price.classList.add("price");
   conteudo.appendChild(price);
+
   contadorVoltas++;
 });
 
@@ -131,8 +131,8 @@ function addToCart(itemCart) {
 }
 
 function removeToCart(itemCart) {
-  const found = cartList.find(item => item.title === itemCart.title);
-  const indexFound = cartList.findIndex(item => item.title === itemCart.title);
+  const found = cartList.find((item) => item.title === itemCart.title);
+  const indexFound = cartList.findIndex((item) => item.title === itemCart.title);
 
   if (found.quantity === 1) {
     cartList.splice(indexFound, 1);
@@ -148,13 +148,13 @@ function addCartInfos() {
   divOrderTotal.innerHTML = "";
 
   cartList.forEach((item, index) => {
-    // Verifique se o item ainda está no carrinho (caso o índice tenha sido invalidado)
     if (!item) return;
 
     divItemsCart.style.display = "block";
 
     const divCart = document.createElement("div");
     divCart.classList.add("divCart");
+
     const divTitle = document.createElement("div");
     const divInfos = document.createElement("div");
     const divItem = document.createElement("div");
@@ -209,7 +209,10 @@ function addCartInfos() {
 
         cartList.splice(index, 1);
 
-        const foundIndex = desserts.findIndex(dessertItem => dessertItem.title === item.title);
+        const foundIndex = desserts.findIndex(
+          (dessertItem) => dessertItem.title === item.title
+        );
+
         if (foundIndex !== -1) {
           desserts[foundIndex].quantity = 0;
         }
@@ -225,7 +228,6 @@ function addCartInfos() {
         }
 
         tot[0].textContent = `Your Cart (${contadorGeral})`;
-
         verificaCart(contadorGeral);
       }
     });
@@ -273,10 +275,12 @@ iconAdd.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     desserts[index].quantity++;
     contadorGeral++;
+
     addToCart(desserts[index]);
 
     num[index].textContent = `${desserts[index].quantity}`;
     tot[0].textContent = `Your Cart (${contadorGeral})`;
+
     addCartInfos();
   });
 });
@@ -296,13 +300,14 @@ iconDesc.forEach((btn, index) => {
     }
 
     if (contadorGeral < 0) contadorGeral = 0;
+
     tot[0].textContent = `Your Cart (${contadorGeral})`;
     removeToCart(desserts[index]);
     addCartInfos();
   });
 });
 
-cartBtn.addEventListener('click', () => {
+cartBtn.addEventListener("click", () => {
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
 
@@ -324,13 +329,13 @@ cartBtn.addEventListener('click', () => {
   pDescription.innerHTML = "We hope you enjoy your food!";
   pDescription.classList.add("p-description");
 
-  // LISTAR PRODUTOS DO CARRINHO
   const divOrder = document.createElement("div");
-  
+
   const divShoppingList = document.createElement("div");
-  divShoppingList.classList.add("divShoppingList")
-  
+  divShoppingList.classList.add("divShoppingList");
+
   divOrder.classList.add("div-order");
+
   cartList.forEach((item) => {
     const divOrderList = document.createElement("divOrderList");
 
@@ -341,7 +346,7 @@ cartBtn.addEventListener('click', () => {
     descriptiveDiv.classList.add("descriptiveDiv");
 
     const infoDiv = document.createElement("div");
-    infoDiv.classList.add("infoDiv")
+    infoDiv.classList.add("infoDiv");
 
     const img = document.createElement("img");
     img.src = item.image;
@@ -350,7 +355,7 @@ cartBtn.addEventListener('click', () => {
 
     const title = document.createElement("p");
     title.textContent = item.title;
-    title.classList.add("p-title")
+    title.classList.add("p-title");
 
     const quantity = document.createElement("p");
     quantity.textContent = `${item.quantity}x`;
@@ -361,7 +366,8 @@ cartBtn.addEventListener('click', () => {
     price.classList.add("p-price");
 
     const total = document.createElement("p");
-    total.textContent = "$12.00"
+    const soma = item.quantity * item.price;
+    total.textContent = `$${soma.toFixed(2)}`;
     total.classList.add("p-cart-total");
 
     const hr = document.createElement("hr");
@@ -376,25 +382,59 @@ cartBtn.addEventListener('click', () => {
     divMainOrder.appendChild(img);
     divMainOrder.appendChild(descriptiveDiv);
     divMainOrder.appendChild(total);
-    
+
     divOrderList.appendChild(divMainOrder);
     divOrderList.appendChild(hr);
-    
-    divShoppingList.appendChild(divOrderList)
 
+    divShoppingList.appendChild(divOrderList);
     divOrder.appendChild(divShoppingList);
   });
 
-
   const newOrderBtn = document.createElement("button");
   newOrderBtn.textContent = "Start New Order";
-  newOrderBtn.classList.add("cart-btn");
+  newOrderBtn.classList.add("new-list-btn");
+  
+  const divTotal = document.createElement("div");
+  divTotal.classList.add("divTotal");
+  
+  let cartTotal = 0;
+  cartList.forEach((item) => {
+    cartTotal += item.quantity * item.price;
+  });
+  const pOrder = document.createElement("p");
+  pOrder.textContent = "Order Total";
+  pOrder.id = "order";
+
+  const pTotal = document.createElement("p");
+  pTotal.textContent = `$${cartTotal.toFixed(2)}`;
+  pTotal.id = "total";
+  
+  divTotal.appendChild(pOrder);
+  divTotal.appendChild(pTotal);
 
   modal.appendChild(confirmImg);
   modal.appendChild(confirmTitle);
   modal.appendChild(pDescription);
   modal.appendChild(divOrder);
+  modal.appendChild(divTotal);
   modal.appendChild(newOrderBtn);
 
   overlay.appendChild(modal);
+
+  newOrderBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    overlay.style.display = "none";
+    cartList = [];
+    verificaCart(0);
+    btnCartItems.forEach((item) => {
+      item.style.display = "none";
+    });
+    
+    btnCart.forEach((item) => {
+      item.style.display = "flex";
+    });
+    document.body.style.overflow = "visible";
+    tot[0].textContent = "Your Cart (0)";
+    cotadorGeral = 0;
+  });
 });
