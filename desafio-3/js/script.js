@@ -326,6 +326,10 @@ cartBtn.addEventListener('click', () => {
 
   // LISTAR PRODUTOS DO CARRINHO
   const divOrder = document.createElement("div");
+  
+  const divShoppingList = document.createElement("div");
+  divShoppingList.classList.add("divShoppingList")
+  
   divOrder.classList.add("div-order");
   cartList.forEach((item) => {
     const divOrderList = document.createElement("divOrderList");
@@ -375,9 +379,10 @@ cartBtn.addEventListener('click', () => {
     
     divOrderList.appendChild(divMainOrder);
     divOrderList.appendChild(hr);
-
-    divOrder.appendChild(divOrderList);
     
+    divShoppingList.appendChild(divOrderList)
+
+    divOrder.appendChild(divShoppingList);
   });
 
 
