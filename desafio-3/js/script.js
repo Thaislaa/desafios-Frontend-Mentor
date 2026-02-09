@@ -301,3 +301,12 @@ iconDesc.forEach((btn, index) => {
     addCartInfos();
   });
 });
+
+
+cartBtn.addEventListener('click', () => {
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  document.body.appendChild(overlay);
+  alert("clicou")
+});
