@@ -306,8 +306,8 @@ body {
 
 .divShoppingList{
   padding: 20px;
-  height: 320px;
-  margin-bottom: 20px;
+  height: 280px;
+  margin-bottom: 15px;
   overflow-y: auto;
 }
 
@@ -322,4 +322,20 @@ body {
 .p-cart-total{
   font-weight: 600;
   margin-left: auto;
+}
+
+.new-list-btn {
+  background-color: hsl(14, 86%, 42%);
+  border: 1px solid hsl(14, 86%, 42%);
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.divTotal{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
