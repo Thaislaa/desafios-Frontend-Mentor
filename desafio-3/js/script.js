@@ -307,5 +307,24 @@ cartBtn.addEventListener('click', () => {
   overlay.classList.add("overlay");
 
   document.body.appendChild(overlay);
-  alert("clicou")
+  document.body.style.overflow = "hidden";
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+
+  const confirmImg = document.createElement("img");
+  confirmImg.src = "./images/icon-order-confirmed.svg";
+  confirmImg.alt = "check icon";
+
+  const confirmTitle = document.createElement("h1");
+  confirmTitle.innerHTML = "Order Confirmed";
+
+  const pDescription = document.createElement("p");
+  pDescription.innerHTML = "We hope you enjoy your food!";
+
+  modal.appendChild(confirmImg);
+  modal.appendChild(confirmTitle);
+  modal.appendChild(pDescription);
+
+  overlay.appendChild(modal);
 });
