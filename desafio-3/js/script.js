@@ -302,7 +302,6 @@ iconDesc.forEach((btn, index) => {
   });
 });
 
-
 cartBtn.addEventListener('click', () => {
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
