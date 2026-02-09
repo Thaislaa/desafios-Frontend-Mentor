@@ -315,16 +315,81 @@ cartBtn.addEventListener('click', () => {
   const confirmImg = document.createElement("img");
   confirmImg.src = "./images/icon-order-confirmed.svg";
   confirmImg.alt = "check icon";
+  confirmImg.classList.add("confirm-img");
 
   const confirmTitle = document.createElement("h1");
   confirmTitle.innerHTML = "Order Confirmed";
 
   const pDescription = document.createElement("p");
   pDescription.innerHTML = "We hope you enjoy your food!";
+  pDescription.classList.add("p-description");
+
+  // LISTAR PRODUTOS DO CARRINHO
+  const divOrder = document.createElement("div");
+  divOrder.classList.add("div-order");
+  cartList.forEach((item) => {
+    const divOrderList = document.createElement("divOrderList");
+
+    const divMainOrder = document.createElement("div");
+    divMainOrder.classList.add("divMainOrder");
+
+    const descriptiveDiv = document.createElement("div");
+    descriptiveDiv.classList.add("descriptiveDiv");
+
+    const infoDiv = document.createElement("div");
+    infoDiv.classList.add("infoDiv")
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.title;
+    img.classList.add("small-img");
+
+    const title = document.createElement("p");
+    title.textContent = item.title;
+    title.classList.add("p-title")
+
+    const quantity = document.createElement("p");
+    quantity.textContent = `${item.quantity}x`;
+    quantity.classList.add("p-quantity");
+
+    const price = document.createElement("p");
+    price.textContent = `$${item.price.toFixed(2)}`;
+    price.classList.add("p-price");
+
+    const total = document.createElement("p");
+    total.textContent = "$12.00"
+    total.classList.add("p-cart-total");
+
+    const hr = document.createElement("hr");
+    hr.classList.add("hr");
+
+    infoDiv.appendChild(quantity);
+    infoDiv.appendChild(price);
+
+    descriptiveDiv.appendChild(title);
+    descriptiveDiv.appendChild(infoDiv);
+
+    divMainOrder.appendChild(img);
+    divMainOrder.appendChild(descriptiveDiv);
+    divMainOrder.appendChild(total);
+    
+    divOrderList.appendChild(divMainOrder);
+    divOrderList.appendChild(hr);
+
+    divOrder.appendChild(divOrderList);
+    
+  });
+
+
+  const newOrderBtn = document.createElement("button");
+  newOrderBtn.textContent = "Start New Order";
+  newOrderBtn.classList.add("cart-btn");
 
   modal.appendChild(confirmImg);
   modal.appendChild(confirmTitle);
   modal.appendChild(pDescription);
+  modal.appendChild(divOrder);
+  modal.appendChild(newOrderBtn);
 
   overlay.appendChild(modal);
 });

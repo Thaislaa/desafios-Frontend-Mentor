@@ -6,7 +6,7 @@
   font-family: "Red Hat Text", sans-serif;
 }
 
-h1 {
+.desserts h1 {
   font-weight: 900;
   margin-bottom: 20px;
 }
@@ -276,5 +276,45 @@ body {
   width: 450px;
   height: 550px;
   border-radius: 10px;
+  padding: 25px;
+}
+
+.confirm-img {
+  padding-bottom: 15px;
+  ;
+}
+
+.p-description {
+  padding-top: 5px;
+  color: #807b73;
+}
+
+.div-order {
+  background-color: hsl(13, 31%, 94%);
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.small-img {
+  width: 60px;
+  border-radius: 5px;
+}
+
+.divMainOrder{
+  display: flex;
+  align-items: center;
   padding: 20px;
+}
+
+.descriptiveDiv{
+  margin-left: 20px;
+}
+
+.infoDiv{
+  display: flex;
+}
+
+.p-cart-total{
+  font-weight: 600;
+  margin-left: auto;
 }
