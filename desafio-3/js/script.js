@@ -254,6 +254,20 @@ function addCartInfos() {
   cart.appendChild(divOrderTotal);
 }
 
+function createElement(tag, className, text){
+  const element = document.createElement(tag);
+  
+  if(className){
+    element.classList.add(className);
+  }
+  
+  if(text){
+    element.textContent = text;
+  }
+  
+  return element;
+}
+
 btnCart.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     desserts[index].quantity = 1;
@@ -317,61 +331,41 @@ cartBtn.addEventListener("click", () => {
   const modal = document.createElement("div");
   modal.classList.add("modal");
 
-  const confirmImg = document.createElement("img");
+  const confirmImg = createElement("img", "confirm-img");
   confirmImg.src = "./images/icon-order-confirmed.svg";
   confirmImg.alt = "check icon";
-  confirmImg.classList.add("confirm-img");
 
-  const confirmTitle = document.createElement("h1");
-  confirmTitle.innerHTML = "Order Confirmed";
+  const confirmTitle = createElement("h1", null, "Order Confirmed");
 
-  const pDescription = document.createElement("p");
-  pDescription.innerHTML = "We hope you enjoy your food!";
-  pDescription.classList.add("p-description");
+  const pDescription = createElement("p", "p-description", "We hope you enjoy your food!");
 
-  const divOrder = document.createElement("div");
+  const divOrder = createElement("div", "div-order")
 
-  const divShoppingList = document.createElement("div");
-  divShoppingList.classList.add("divShoppingList");
-
-  divOrder.classList.add("div-order");
+  const divShoppingList = createElement("div", "divShoppingList");
 
   cartList.forEach((item) => {
-    const divOrderList = document.createElement("divOrderList");
+    const divOrderList = createElement("div", "divOrderList");
 
-    const divMainOrder = document.createElement("div");
-    divMainOrder.classList.add("divMainOrder");
+    const divMainOrder = createElement("div", "divMainOrder");
 
-    const descriptiveDiv = document.createElement("div");
-    descriptiveDiv.classList.add("descriptiveDiv");
+    const descriptiveDiv = createElement("div", "descriptiveDiv");
 
-    const infoDiv = document.createElement("div");
-    infoDiv.classList.add("infoDiv");
+    const infoDiv = createElement("div", "infoDiv");
 
-    const img = document.createElement("img");
+    const img = createElement("img", "small-img");
     img.src = item.image;
     img.alt = item.title;
-    img.classList.add("small-img");
 
-    const title = document.createElement("p");
-    title.textContent = item.title;
-    title.classList.add("p-title");
+    const title = createElement("p", "p-title", item.title);
 
-    const quantity = document.createElement("p");
-    quantity.textContent = `${item.quantity}x`;
-    quantity.classList.add("p-quantity");
+    const quantity = createElement("p", "p-quantity", `${item.quantity}x`);
 
-    const price = document.createElement("p");
-    price.textContent = `$${item.price.toFixed(2)}`;
-    price.classList.add("p-price");
+    const price = createElement("p", "p-price", `$${item.price.toFixed(2)}`);
 
-    const total = document.createElement("p");
     const soma = item.quantity * item.price;
-    total.textContent = `$${soma.toFixed(2)}`;
-    total.classList.add("p-cart-total");
+    const total = createElement("p", "p-cart-total", `$${soma.toFixed(2)}`);
 
-    const hr = document.createElement("hr");
-    hr.classList.add("hr");
+    const hr = createElement("hr", "hr");
 
     infoDiv.appendChild(quantity);
     infoDiv.appendChild(price);
@@ -390,24 +384,17 @@ cartBtn.addEventListener("click", () => {
     divOrder.appendChild(divShoppingList);
   });
 
-  const newOrderBtn = document.createElement("button");
-  newOrderBtn.textContent = "Start New Order";
-  newOrderBtn.classList.add("new-list-btn");
+  const newOrderBtn = createElement("button", "new-list-btn", "Start New Order");
   
-  const divTotal = document.createElement("div");
-  divTotal.classList.add("divTotal");
+  const divTotal = createElement("div", "divTotal");
   
   let cartTotal = 0;
   cartList.forEach((item) => {
     cartTotal += item.quantity * item.price;
   });
-  const pOrder = document.createElement("p");
-  pOrder.textContent = "Order Total";
-  pOrder.id = "order";
+  const pOrder = createElement("p", "order", "Order Total");
 
-  const pTotal = document.createElement("p");
-  pTotal.textContent = `$${cartTotal.toFixed(2)}`;
-  pTotal.id = "total";
+  const pTotal = createElement("p", "total", `$${cartTotal.toFixed(2)}`);
   
   divTotal.appendChild(pOrder);
   divTotal.appendChild(pTotal);
@@ -435,6 +422,6 @@ cartBtn.addEventListener("click", () => {
     });
     document.body.style.overflow = "visible";
     tot[0].textContent = "Your Cart (0)";
-    cotadorGeral = 0;
+    contadorGeral = 0;
   });
 });
