@@ -103,6 +103,22 @@ let cartList = [];
 
 const cartDiv = document.querySelector(".div-items-cart");
 
+function addToCart(itemCart) {
+  const found = cartList.find(item => item.title === itemCart.title);
+
+  if (!found) {
+    cartList.push({
+      category: itemCart.category,
+      title: itemCart.title,
+      price: itemCart.price,
+      image: itemCart.image,
+      quantity: 1
+    });
+  } else {
+    found.quantity++;
+  }
+}
+
 function verificaCart(contadorGeral) {
   if (contadorGeral > 0) {
     imgCart.style.display = "none";
@@ -123,35 +139,24 @@ function verificaCart(contadorGeral) {
   }
 }
 
-function addToCart(itemCart) {
-  const found = cartList.find((item) => item.title === itemCart.title);
-  const indexFound = cartList.findIndex((item) => item.title === itemCart.title);
+function removeToCart(itemCart) {
+  const found = cartList.find(item => item.title === itemCart.title);
 
-  if (!found) {
-    cartList.push({
-      category: itemCart.category,
-      title: itemCart.title,
-      price: itemCart.price,
-      image: itemCart.image,
-      quantity: 1
-    });
-  } else {
-    const item = desserts.find((item) => found.title === item.title);
-    cartList[indexFound].quantity = item.quantity;
+  if (!found) return;
+
+  found.quantity--;
+
+  if (found.quantity <= 0) {
+    cartList = cartList.filter(item => item.title !== itemCart.title);
   }
 }
 
-function removeToCart(itemCart) {
-  const found = cartList.find((item) => item.title === itemCart.title);
-  const indexFound = cartList.findIndex((item) => item.title === itemCart.title);
-
-  if (found.quantity === 1) {
-    cartList.splice(indexFound, 1);
-  } else {
-    found.quantity--;
-    const item = desserts.find((item) => found.title === item.title);
-    cartList[indexFound].quantity = item.quantity;
-  }
+function calculateCartTotal(){
+  let cartTotal = 0;
+  cartList.forEach((item) => {
+    cartTotal += (item.quantity * item.price)
+  });
+  return cartTotal;
 }
 
 function addCartInfos() {
@@ -209,12 +214,12 @@ function addCartInfos() {
 
         cartList.splice(index, 1);
 
-        const foundIndex = desserts.findIndex(
+        const foundIndex = cartList.findIndex(
           (dessertItem) => dessertItem.title === item.title
         );
 
         if (foundIndex !== -1) {
-          desserts[foundIndex].quantity = 0;
+          cartList[foundIndex].quantity = 0;
         }
 
         addCartInfos();
@@ -233,11 +238,8 @@ function addCartInfos() {
     });
   });
 
-  let cartTotal = 0;
-  cartList.forEach((item) => {
-    cartTotal += item.quantity * item.price;
-  });
-
+  const cartTotal = calculateCartTotal();
+        
   const cart = document.querySelector(".cart");
 
   const pOrder = createElement("p", "order", "Order Total");
@@ -250,55 +252,61 @@ function addCartInfos() {
   cart.appendChild(divOrderTotal);
 }
 
-btnCart.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    desserts[index].quantity = 1;
-    contadorGeral++;
-
-    btn.style.display = "none";
-    btnCartItems[index].style.display = "flex";
-
-    num[index].textContent = `${desserts[index].quantity}`;
-    tot[0].textContent = `Your Cart (${contadorGeral})`;
-
-    verificaCart(contadorGeral);
-    addToCart(desserts[index]);
-    addCartInfos();
-  });
-});
-
 iconAdd.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    desserts[index].quantity++;
     contadorGeral++;
 
     addToCart(desserts[index]);
 
-    num[index].textContent = `${desserts[index].quantity}`;
-    tot[0].textContent = `Your Cart (${contadorGeral})`;
+    const item = cartList.find(i => i.title === desserts[index].title);
+    num[index].textContent = item.quantity;
 
+    tot[0].textContent = `Your Cart (${contadorGeral})`;
     addCartInfos();
   });
 });
 
 iconDesc.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    desserts[index].quantity--;
-    contadorGeral--;
+    const item = cartList.find(i => i.title === desserts[index].title);
 
-    if (desserts[index].quantity <= 0) {
-      desserts[index].quantity = 0;
+    if (!item) return;
+
+    contadorGeral--;
+    item.quantity--;
+
+    if (item.quantity <= 0) {
+      cartList = cartList.filter(i => i.title !== item.title);
+
       btnCart[index].style.display = "flex";
       btnCartItems[index].style.display = "none";
-      verificaCart(contadorGeral);
+      num[index].textContent = "1";
     } else {
-      num[index].textContent = desserts[index].quantity;
+      num[index].textContent = item.quantity;
     }
 
     if (contadorGeral < 0) contadorGeral = 0;
 
     tot[0].textContent = `Your Cart (${contadorGeral})`;
-    removeToCart(desserts[index]);
+    verificaCart(contadorGeral);
+    addCartInfos();
+  });
+});
+
+btnCart.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    contadorGeral++;
+
+    btn.style.display = "none";
+    btnCartItems[index].style.display = "flex";
+
+    addToCart(desserts[index]);
+
+    const item = cartList.find(i => i.title === desserts[index].title);
+    num[index].textContent = item.quantity;
+
+    tot[0].textContent = `Your Cart (${contadorGeral})`;
+    verificaCart(contadorGeral);
     addCartInfos();
   });
 });
@@ -313,7 +321,7 @@ cartBtn.addEventListener("click", () => {
 
   const confirmImg = createElement("img", "confirm-img");
   confirmImg.src = "./images/icon-order-confirmed.svg";
-  confirmImg.alt = "check icon";
+  confirmImg.alt = "Pedido confirmado";
 
   const confirmTitle = createElement("h1", null, "Order Confirmed");
 
@@ -368,10 +376,8 @@ cartBtn.addEventListener("click", () => {
   
   const divTotal = createElement("div", "divTotal");
   
-  let cartTotal = 0;
-  cartList.forEach((item) => {
-    cartTotal += item.quantity * item.price;
-  });
+  const cartTotal = calculateCartTotal();
+  
   const pOrder = createElement("p", "order", "Order Total");
 
   const pTotal = createElement("p", "total", `$${cartTotal.toFixed(2)}`);
@@ -405,4 +411,3 @@ cartBtn.addEventListener("click", () => {
     contadorGeral = 0;
   });
 });
-
