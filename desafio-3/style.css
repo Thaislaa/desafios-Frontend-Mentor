@@ -373,12 +373,20 @@ body {
   .price {
     font-size: 16px;
   }
+
+  .desserts>h1 {
+    padding: 20px;
+  }
 }
 
 @media screen and ((min-width: 1059px) and (max-width: 1098px)) {
   .btn-cart {
     height: 35px;
     width: 140px;
+  }
+
+  .desserts>h1 {
+    padding: 20px;
   }
 
   .btn-cart-items {
@@ -417,6 +425,10 @@ body {
     width: 140px;
   }
 
+  .desserts>h1 {
+    padding: 20px;
+  }
+
   .btn-cart-items {
     height: 35px;
     width: 140px;
@@ -445,6 +457,10 @@ body {
   .price {
     font-size: 14px;
   }
+
+  .overlay {
+    inset: 0;
+  }
 }
 
 @media screen and ((min-width: 981px) and (max-width: 1020px)) {
@@ -460,6 +476,10 @@ body {
 
   .desserts {
     margin-left: 20px;
+  }
+
+  .desserts>h1 {
+    padding: 20px;
   }
 
   .conteudo>img {
@@ -484,8 +504,16 @@ body {
 
   .cart {
     height: 450px;
-    width: 300px;
+    width: 400px;
     margin-top: 30px;
+  }
+
+  .overlay {
+    inset: 0;
+  }
+
+  .div-items-cart {
+    height: 250px;
   }
 }
 
@@ -494,7 +522,7 @@ body {
     display: block;
   }
 
-  h1 {
+  .desserts>h1 {
     padding: 20px;
   }
 
@@ -535,6 +563,18 @@ body {
     width: 100vw;
     margin-bottom: 20px;
   }
+
+  .overlay {
+    inset: 0;
+  }
+
+  .modal {
+    width: 400px;
+  }
+
+  h1 {
+    padding: 0;
+  }
 }
 
 @media screen and ((min-width: 0) and (max-width: 500px)) {
@@ -542,7 +582,7 @@ body {
     display: block;
   }
 
-  h1 {
+  .desserts>h1 {
     padding: 20px;
   }
 
@@ -582,5 +622,17 @@ body {
     justify-content: center;
     width: 100vw;
     margin-bottom: 20px;
+  }
+
+  .overlay {
+    inset: 0;
+  }
+
+  .modal {
+    width: 300px;
+  }
+
+  h1 {
+    padding: 0;
   }
 }
