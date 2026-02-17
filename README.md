@@ -77,6 +77,21 @@ com JavaScript.
 
 <hr>
 
+<h3> -> Desafio 03</h3>
+<p>
+🔗 <strong>Deploy:</strong><br>
+<a href="https://desafio3-hazel.vercel.app/" target="_blank">
+https://desafio3-hazel.vercel.app/
+</a>
+</p>
+
+<p>
+Projeto de página de sobremesas desenvolvido com HTML, CSS e JavaScript, com layout responsivo utilizando Flexbox e media queries.
+Os produtos e o carrinho são renderizados e atualizados dinamicamente via JavaScript a partir de um array de dados.
+</p>
+
+<hr>
+
 <h2>Tecnologias Utilizadas</h2>
 
 <p>
