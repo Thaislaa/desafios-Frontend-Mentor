@@ -271,7 +271,7 @@ body {
 .modal {
   background-color: white;
   width: 450px;
-  height: 550px;
+  min-height: 550px;
   border-radius: 10px;
   padding: 25px;
 }
@@ -296,27 +296,27 @@ body {
   border-radius: 5px;
 }
 
-.divMainOrder{
+.divMainOrder {
   display: flex;
   align-items: center;
 }
 
-.divShoppingList{
+.divShoppingList {
   padding: 20px;
   height: 280px;
   margin-bottom: 15px;
   overflow-y: auto;
 }
 
-.descriptiveDiv{
+.descriptiveDiv {
   margin-left: 20px;
 }
 
-.infoDiv{
+.infoDiv {
   display: flex;
 }
 
-.p-cart-total{
+.p-cart-total {
   font-weight: 600;
   margin-left: auto;
 }
@@ -331,8 +331,55 @@ body {
   cursor: pointer;
 }
 
-.divTotal{
+.divTotal {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    display: block;
+  }
+
+  h1{
+    padding: 20px;
+  }
+
+  .desserts{
+    width: 100vw;
+    margin-top: 0;
+  }
+
+  .containers {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+  }
+
+  .conteudo {
+    width: 80%;
+    padding-right: 0;
+    padding-bottom: 15px;
+  }
+
+  .conteudo>img {
+    width: 100%;
+  }
+
+  .cart{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .div-cart{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-bottom: 20px;
+  }
+
+  .conteudo>img{
+    margin-bottom: 10px;
+  }
 }
