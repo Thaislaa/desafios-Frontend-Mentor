@@ -227,7 +227,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.bold{
+  font-weight: 600;
+  padding: 0 3px;
 }
 
 .delivery-info {
