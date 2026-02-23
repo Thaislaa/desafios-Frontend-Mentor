@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Contato</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <main>
+        <form action="#">
+            <h1>Contact Us</h1>
+
+            <label for="first-name">First Name *</label>
+            <input type="text" name="first-name" id="first-name">
+
+            <label for="last-name">Last Name *</label>
+            <input type="text" name="last-name" id="last-name">
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email">
+
+            <label for="option-enquiry">
+                <input type="radio" name="type" value="enquiry" id="option-enquiry"> General Enquiry
+            </label>
+
+            <label for="option-request">
+                <input type="radio" name="type" value="support" id="option-request"> Support Request
+            </label>
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message"></textarea>
+
+            <label for="consent">
+                <input type="checkbox" id="consent">I consent to being contacted by the team
+            </label>
+        </form>
+    </main>
 </body>
+
 </html>
