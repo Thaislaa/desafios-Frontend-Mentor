@@ -65,6 +65,12 @@ input {
     cursor: pointer;
 }
 
+.options:has(input[type="radio"]:checked) {
+    background-color: hsl(148, 38%, 91%);
+    border: 1px solid hsl(169, 82%, 27%);
+    ;
+}
+
 #message {
     height: 200px;
     border-radius: 7px;
@@ -72,9 +78,8 @@ input {
 }
 
 input[type="checkbox"] {
-    transform: scale(1.5);
+    transform: scale(1.2);
     border: 1px solid hsl(187, 24%, 22%);
-    border-radius: 0;
 }
 
 input[type="checkbox"]:checked {
@@ -93,7 +98,7 @@ input[type="radio"] {
 }
 
 #consent-checkbox {
-    margin: 0 15px 0 5px;
+    margin: 0 10px 0 5px;
 }
 
 .checkbox {
