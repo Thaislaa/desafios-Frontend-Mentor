@@ -35,10 +35,11 @@ label {
 }
 
 input {
-    padding: 15px 10px;
+    padding: 15px;
     margin-bottom: 20px;
     border-radius: 7px;
     border: 1px solid hsl(186, 15%, 59%);
+    cursor: pointer;
 }
 
 .select {
@@ -51,16 +52,17 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 3px 0 0;
+    margin: 0 10px 0 0;
 }
 
 .options {
     border: 1px solid hsl(186, 15%, 59%);
     display: flex;
     align-items: center;
-    padding: 15px 10px;
+    padding: 15px;
     border-radius: 7px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 #message {
@@ -75,6 +77,15 @@ input[type="checkbox"] {
     border-radius: 0;
 }
 
+input[type="checkbox"]:checked {
+    accent-color: hsl(169, 82%, 27%);
+}
+
+input[type="radio"] {
+    accent-color: hsl(169, 82%, 27%);
+    transform: scale(1.2);
+}
+
 .div-select {
     display: flex;
     align-items: center;
@@ -85,6 +96,10 @@ input[type="checkbox"] {
     margin: 0 15px 0 5px;
 }
 
+.checkbox {
+    cursor: pointer;
+}
+
 .btn {
     background-color: hsl(169, 82%, 27%);
     border: 1px solid hsl(169, 82%, 27%);
@@ -93,10 +108,11 @@ input[type="checkbox"] {
     border-radius: 7px;
     font-weight: 600;
     letter-spacing: 0.1em;
+    cursor: pointer;
 }
 
 textarea {
-    padding: 15px 10px;
+    padding: 15px;
 }
 
 .div-flex-column {
@@ -104,6 +120,33 @@ textarea {
     flex-direction: column;
 }
 
+.options:hover {
+    border: 1px solid hsl(169, 82%, 27%);
+}
+
+input:hover {
+    border: 1px solid hsl(169, 82%, 27%);
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid hsl(169, 82%, 27%);
+}
+
+#message:hover {
+    border: 1px solid hsl(169, 82%, 27%);
+}
+
+#message:focus {
+    outline: none;
+    border: 2px solid hsl(169, 82%, 27%);
+}
+
+.btn:hover {
+    background-color: hsl(187, 24%, 22%);
+    border: 1px solid hsl(187, 24%, 22%);
+    ;
+}
 
 @media screen and (min-width: 700px) {
     main {
@@ -126,7 +169,7 @@ textarea {
         height: 50px;
     }
 
-    .div-flex-column{
+    .div-flex-column {
         width: 50%;
     }
 
