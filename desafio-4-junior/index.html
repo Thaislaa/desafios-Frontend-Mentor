@@ -13,35 +13,46 @@
         <form action="#">
             <h1>Contact Us</h1>
 
-            <label for="first-name">First Name <span class="required">*</span></label>
-            <input type="text" name="first-name" id="first-name">
+            <div class="div-flex">
+                <div class="div-flex-column margin-right">
+                    <label for="first-name">First Name <span class="required">*</span></label>
+                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" required>
+                </div>
 
-            <label for="last-name">Last Name <span class="required">*</span></label>
-            <input type="text" name="last-name" id="last-name">
+                <div class="div-flex-column">
+                    <label for="last-name">Last Name <span class="required">*</span></label>
+                    <input type="text" name="last-name" id="last-name" autocomplete="family-name" required>
+                </div>
+            </div>
 
             <label for="email">Email Address <span class="required">*</span></label>
-            <input type="email" id="email">
+            <input type="email" id="email" name="email" autocomplete="email" required>
 
-            <label>Query Type <span class="required">*</span></label>
-            <div class="select">
-                <label for="option-enquiry" class="options">
-                    <input type="radio" name="type" value="enquiry" id="option-enquiry"> General Enquiry
+            <label for="option-enquiry">Query Type <span class="required">*</span></label>
+            <div class="div-flex">
+                <label for="option-enquiry" class="options margin-right">
+                    <input type="radio" name="type" value="enquiry" id="option-enquiry" autocomplete="off" required>
+                    General Enquiry
                 </label>
 
                 <label for="option-request" class="options">
-                    <input type="radio" name="type" value="support" id="option-request"> Support Request
+                    <input type="radio" name="type" value="support" id="option-request" autocomplete="off" required>
+                    Support Request
                 </label>
             </div>
 
             <label for="message">Message <span class="required">*</span></label>
-            <textarea name="message" id="message"></textarea>
+            <textarea name="message" id="message" autocomplete="off" required></textarea>
 
             <div class="div-select">
-                <input type="checkbox" id="consent-checkbox">
-                <div id="consent"><label for="consent-label" class="">I consent to being contacted by the team <span class="required">*</span></label></div>
+                <input type="checkbox" id="consent-checkbox" name="consent" required>
+                <div id="consent">
+                    <label for="consent-checkbox">I consent to being contacted by the team <span
+                            class="required">*</span></label>
+                </div>
             </div>
 
-            <button class="btn">Submit</button>
+            <button class="btn" type="submit">Submit</button>
         </form>
     </main>
 </body>

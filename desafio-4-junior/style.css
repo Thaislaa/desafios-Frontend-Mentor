@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -7,8 +8,6 @@
 body {
     font-family: 'Karla', sans-serif;
     background-color: hsl(148, 38%, 91%);
-    width: 100vw;
-    min-height: 100vh;
 }
 
 form {
@@ -71,9 +70,9 @@ input {
 }
 
 input[type="checkbox"] {
-  transform: scale(1.5);
-  border: 1px solid hsl(187, 24%, 22%);
-  border-radius: 0;
+    transform: scale(1.5);
+    border: 1px solid hsl(187, 24%, 22%);
+    border-radius: 0;
 }
 
 .div-select {
@@ -87,8 +86,8 @@ input[type="checkbox"] {
 }
 
 .btn {
-    background-color:  hsl(169, 82%, 27%);
-    border: 1px solid  hsl(169, 82%, 27%);
+    background-color: hsl(169, 82%, 27%);
+    border: 1px solid hsl(169, 82%, 27%);
     color: hsl(0, 0%, 100%);
     padding: 15px;
     border-radius: 7px;
@@ -96,6 +95,46 @@ input[type="checkbox"] {
     letter-spacing: 0.1em;
 }
 
-textarea{
+textarea {
     padding: 15px 10px;
+}
+
+.div-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 700px) {
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    form {
+        width: 550px;
+    }
+
+    .div-flex {
+        display: flex;
+    }
+
+    #message {
+        height: 50px;
+    }
+
+    .div-flex-column{
+        width: 50%;
+    }
+
+    .margin-right {
+        margin-right: 15px;
+    }
+
+    .options {
+        width: 50%;
+    }
 }
