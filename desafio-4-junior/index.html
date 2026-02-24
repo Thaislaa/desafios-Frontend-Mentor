@@ -13,29 +13,35 @@
         <form action="#">
             <h1>Contact Us</h1>
 
-            <label for="first-name">First Name *</label>
+            <label for="first-name">First Name <span class="required">*</span></label>
             <input type="text" name="first-name" id="first-name">
 
-            <label for="last-name">Last Name *</label>
+            <label for="last-name">Last Name <span class="required">*</span></label>
             <input type="text" name="last-name" id="last-name">
 
-            <label for="email">Email Address</label>
+            <label for="email">Email Address <span class="required">*</span></label>
             <input type="email" id="email">
 
-            <label for="option-enquiry">
-                <input type="radio" name="type" value="enquiry" id="option-enquiry"> General Enquiry
-            </label>
+            <label>Query Type <span class="required">*</span></label>
+            <div class="select">
+                <label for="option-enquiry" class="options">
+                    <input type="radio" name="type" value="enquiry" id="option-enquiry"> General Enquiry
+                </label>
 
-            <label for="option-request">
-                <input type="radio" name="type" value="support" id="option-request"> Support Request
-            </label>
+                <label for="option-request" class="options">
+                    <input type="radio" name="type" value="support" id="option-request"> Support Request
+                </label>
+            </div>
 
-            <label for="message">Message</label>
+            <label for="message">Message <span class="required">*</span></label>
             <textarea name="message" id="message"></textarea>
 
-            <label for="consent">
-                <input type="checkbox" id="consent">I consent to being contacted by the team
-            </label>
+            <div class="div-select">
+                <input type="checkbox" id="consent-checkbox">
+                <div id="consent"><label for="consent-label" class="">I consent to being contacted by the team <span class="required">*</span></label></div>
+            </div>
+
+            <button>Submit</button>
         </form>
     </main>
 </body>
