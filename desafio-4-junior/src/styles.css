@@ -38,10 +38,19 @@ input {
   padding: 10px;
   border-radius: 7px;
   border: 1px solid hsl(186, 15%, 59%);
+  outline: none;
+}
+
+input:hover {
+  border: 1px solid hsl(169, 82%, 27%);
 }
 
 .input-error {
   border: 1px solid hsl(0, 66%, 54%);
+}
+
+input:focus {
+  border: 2px solid hsl(169, 82%, 27%);
 }
 
 .margin-bottom {
@@ -77,9 +86,22 @@ input {
   border-radius: 7px;
 }
 
+.options:hover {
+  border: 1px solid hsl(169, 82%, 27%);
+}
+
 #message {
   height: 200px;
   border-radius: 7px;
+  outline: none;
+}
+
+#message:hover {
+  border: 1px solid hsl(169, 82%, 27%);
+}
+
+#message:focus {
+  border: 2px solid hsl(169, 82%, 27%);
 }
 
 input[type="checkbox"] {
@@ -92,6 +114,12 @@ input[type="checkbox"] {
 input[type="radio"] {
   accent-color: hsl(169, 82%, 27%);
   width: 20px;
+}
+
+.options:has(input:checked) {
+  background-color: hsl(148, 38%, 91%);
+  border: 1px solid hsl(169, 82%, 27%);
+  ;
 }
 
 .div-select {
@@ -115,6 +143,10 @@ input[type="radio"] {
   margin-top: 20px;
 }
 
+.btn:hover {
+  background-color: #074A3E;
+}
+
 textarea {
   padding: 10px;
 }
@@ -128,6 +160,10 @@ textarea {
   color: hsl(0, 66%, 54%);
   margin-top: 10px;
   font-size: 14px;
+}
+
+.margin-t {
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 700px) {
@@ -165,5 +201,9 @@ textarea {
 
   .margin-btm {
     margin-bottom: 0;
+  }
+
+  .margin-t {
+    margin-top: 0;
   }
 }

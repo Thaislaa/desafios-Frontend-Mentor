@@ -21,6 +21,7 @@ export default function App() {
   const [errors, setErrors] = useState<Errors>({});
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    alert("submit")
     event.preventDefault();
     const newErrors: Errors = {};
 
@@ -78,7 +79,7 @@ export default function App() {
               {errors.firstName && <p className="menssageError">{errors.firstName}</p>}
             </div>
             <div className="div-flex-column">
-              <label htmlFor="last-name" className="margin-bottom margin-top">
+              <label htmlFor="last-name" className="margin-bottom margin-t">
                 Last Name <span className="required">*</span>
               </label>
               <input
