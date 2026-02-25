@@ -83,6 +83,12 @@ input[type="checkbox"] {
   transform: scale(1.5);
   border: 1px solid hsl(187, 24%, 22%);
   border-radius: 0;
+  accent-color:  hsl(169, 82%, 27%);
+}
+
+input[type="radio"]{
+  accent-color:  hsl(169, 82%, 27%);
+  width: 20px;
 }
 
 .div-select {
