@@ -32,8 +32,12 @@ export default function App() {
       newErrors.lastName = "This Field is required";
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+
     if (!email.trim()) {
-      newErrors.email = "This Field is required";
+      newErrors.email = "This field is required";
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!message.trim()) {
@@ -54,7 +58,7 @@ export default function App() {
   return (
     <>
       <main>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <h1>Contact Us</h1>
 
           <div className="div-flex">
