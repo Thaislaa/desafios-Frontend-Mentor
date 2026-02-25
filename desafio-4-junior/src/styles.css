@@ -119,7 +119,6 @@ input[type="radio"] {
 .options:has(input:checked) {
   background-color: hsl(148, 38%, 91%);
   border: 1px solid hsl(169, 82%, 27%);
-  ;
 }
 
 .div-select {
