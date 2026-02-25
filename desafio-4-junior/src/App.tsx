@@ -41,7 +41,7 @@ export default function App() {
     }
 
     if (!type.trim()) {
-      newErrors.type = "This Field is required";
+      newErrors.type = "Please select a query type";
     }
 
     if (!consent) {
@@ -69,6 +69,7 @@ export default function App() {
                 id="first-name"
                 autoComplete="given-name"
                 onChange={(event) => setFirstName(event.target.value)}
+                className={errors.firstName && "input-error"}
               />
               {errors.firstName && <p className="menssageError">{errors.firstName}</p>}
             </div>
@@ -83,6 +84,7 @@ export default function App() {
                 id="last-name"
                 autoComplete="family-name"
                 onChange={(event) => setLastName(event.target.value)}
+                className={errors.lastName && "input-error"}
               />
               {errors.lastName && <p className="menssageError">{errors.lastName}</p>}
             </div>
@@ -98,6 +100,7 @@ export default function App() {
             name="email"
             autoComplete="email"
             onChange={(event) => setEmail(event.target.value)}
+            className={errors.email && "input-error"}
           />
           {errors.email && <p className="menssageError">{errors.email}</p>}
 
@@ -142,6 +145,7 @@ export default function App() {
             autoComplete="off"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
+            className={errors.message && "input-error"}
           ></textarea>
           {errors.message && <p className="menssageError">{errors.message}</p>}
 
