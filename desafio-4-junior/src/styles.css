@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  background-color: hsl(148, 38%, 91%);
+}
+
+form {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+  margin: 40px 15px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+h1 {
+  color: hsl(187, 24%, 22%);
+  padding-bottom: 20px;
+}
+
+label {
+  color: hsl(187, 24%, 22%);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.required {
+  color: hsl(169, 82%, 27%);
+}
+
+input {
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid hsl(186, 15%, 59%);
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.margin-top {
+  margin-top: 20px;
+  ;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+}
+
+#option-request,
+#option-enquiry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px 0 0;
+}
+
+.options {
+  border: 1px solid hsl(186, 15%, 59%);
+  display: flex;
+  align-items: center;
+  padding:10px;
+  border-radius: 7px;
+}
+
+#message {
+  height: 200px;
+  border-radius: 7px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  border: 1px solid hsl(187, 24%, 22%);
+  border-radius: 0;
+}
+
+.div-select {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#consent-checkbox {
+  margin: 0 15px 0 5px;
+}
+
+.btn {
+  background-color: hsl(169, 82%, 27%);
+  border: 1px solid hsl(169, 82%, 27%);
+  color: hsl(0, 0%, 100%);
+  padding: 15px;
+  border-radius: 7px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+    margin-top: 20px;
+}
+
+textarea {
+  padding: 10px;
+}
+
+.div-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.menssageError {
+  color: hsl(0, 66%, 54%);
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 700px) {
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  form {
+    width: 550px;
+  }
+
+  .div-flex {
+    display: flex;
+  }
+
+  #message {
+    height: 50px;
+  }
+
+  .div-flex-column {
+    width: 50%;
+  }
+
+  .margin-right {
+    margin-right: 15px;
+  }
+
+  .options {
+    width: 50%;
+  }
+}
