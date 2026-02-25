@@ -78,7 +78,7 @@ export default function App() {
               {errors.firstName && <p className="menssageError">{errors.firstName}</p>}
             </div>
             <div className="div-flex-column">
-              <label htmlFor="last-name" className="margin-bottom">
+              <label htmlFor="last-name" className="margin-bottom margin-top">
                 Last Name <span className="required">*</span>
               </label>
               <input
@@ -112,7 +112,7 @@ export default function App() {
             Query Type <span className="required">*</span>
           </label>
           <div className="div-flex">
-            <label htmlFor="option-enquiry" className="options margin-right">
+            <label htmlFor="option-enquiry" className="options margin-right margin-btm">
               <input
                 type="radio"
                 name="type"
