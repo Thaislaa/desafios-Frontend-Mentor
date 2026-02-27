@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
+import check from "../assets/images/icon-success-check.svg"
 
 interface Errors {
   firstName?: string;
@@ -17,48 +18,79 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
   const [consent, setConsent] = useState(false);
+  const [sucess, setSucess] = useState(false);
+  const [viewMessage, setViewMessage] = useState(true);
 
   const [errors, setErrors] = useState<Errors>({});
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    alert("submit")
     event.preventDefault();
     const newErrors: Errors = {};
 
     if (!firstName.trim()) {
       newErrors.firstName = "This Field is required";
+      setSucess(false);
     }
 
     if (!lastName.trim()) {
       newErrors.lastName = "This Field is required";
+      setSucess(false);
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
     if (!email.trim()) {
       newErrors.email = "This field is required";
+      setSucess(false);
     } else if (!emailRegex.test(email)) {
       newErrors.email = "Please enter a valid email address";
+      setSucess(false);
     }
 
     if (!message.trim()) {
       newErrors.message = "This Field is required";
+      setSucess(false);
     }
 
     if (!type.trim()) {
       newErrors.type = "Please select a query type";
+      setSucess(false); setSucess(false);
     }
 
     if (!consent) {
-      newErrors.consent = "To submit this form, please consent to being contacted"
+      newErrors.consent = "To submit this form, please consent to being contacted";
+      setSucess(false);
     }
 
+    if ((newErrors.firstName === undefined) && (newErrors.lastName === undefined) && (newErrors.email === undefined) && (newErrors.type === undefined) && (newErrors.message === undefined) && (newErrors.consent === undefined)) {
+      setSucess(true);
+
+      setTimeout(() => {
+        setViewMessage(false);
+      }, 2500);
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setType("");
+      setMessage("");
+      setConsent(false);
+    }
     setErrors(newErrors);
   }
 
   return (
     <>
-      <main>
+      <main className="div-main">
+        {viewMessage && sucess && (
+          <div className="sucess-div">
+            <p className="message-check"><img src={check} alt="Check" className="padding-right" />Message Sent!</p>
+            <p className="thanks-message">Thanks for completing the form. We'll be in touch soon!
+            </p>
+          </div>
+        )}
+
+
         <form onSubmit={handleSubmit} noValidate>
           <h1>Contact Us</h1>
 
@@ -76,8 +108,9 @@ export default function App() {
                 onChange={(event) => setFirstName(event.target.value)}
                 className={errors.firstName && "input-error"}
               />
-              {errors.firstName && <p className="menssageError">{errors.firstName}</p>}
+              {errors.firstName && <p className="menssageError">{errors.firstName} </p>}
             </div>
+
             <div className="div-flex-column">
               <label htmlFor="last-name" className="margin-bottom margin-t">
                 Last Name <span className="required">*</span>

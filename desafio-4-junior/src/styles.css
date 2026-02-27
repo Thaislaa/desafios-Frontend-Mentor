@@ -14,9 +14,9 @@ form {
   background-color: hsl(0, 0%, 100%);
   display: flex;
   flex-direction: column;
-  margin: 40px 15px;
   border-radius: 15px;
   padding: 20px;
+  margin: 0px 10px 10px 10px;
 }
 
 h1 {
@@ -153,6 +153,44 @@ textarea {
 .div-flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.div-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-check {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-weight: 700;
+}
+
+.padding-right {
+  padding-right: 10px;
+}
+
+.thanks-message {
+  padding: 0 20px 20px 20px;
+  font-weight: 300;
+}
+
+.sucess-div {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background-color: hsl(187, 24%, 22%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 7px;
+}
+
+.check-icon {
+  margin-right: 10px;
 }
 
 .menssageError {
