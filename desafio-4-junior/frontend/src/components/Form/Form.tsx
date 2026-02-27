@@ -30,7 +30,7 @@ export function Form() {
         setConsent(false);
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const newErrors: Errors = {};
 
@@ -62,6 +62,21 @@ export function Form() {
         }
 
         if (Object.keys(newErrors).length === 0) {
+            await fetch("http://localhost:3000/contact", {
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    message,
+                    type,
+                    consent
+                }),
+            });
+
             setSucess(true);
 
             setTimeout(() => {
