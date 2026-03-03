@@ -63,7 +63,7 @@ export function Form() {
 
         if (Object.keys(newErrors).length === 0) {
             await fetch("http://localhost:3000/contact", {
-                method: "POST", 
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -93,7 +93,7 @@ export function Form() {
             <main className="div-main">
 
                 {sucess && (
-                    <SucessMessage visible={sucess} />
+                    <SucessMessage visible={sucess}/>
                 )}
 
                 <form onSubmit={handleSubmit} noValidate>
@@ -112,8 +112,9 @@ export function Form() {
                                 autoComplete="given-name"
                                 onChange={(event) => setFirstName(event.target.value)}
                                 className={errors.firstName && "input-error"}
+                                required
                             />
-                            {errors.firstName && <p className="menssageError">{errors.firstName} </p>}
+                            {errors.firstName && <p className="messageError" role="alert">{errors.firstName} </p>}
                         </div>
 
                         <div className="div-flex-column">
@@ -128,8 +129,9 @@ export function Form() {
                                 autoComplete="family-name"
                                 onChange={(event) => setLastName(event.target.value)}
                                 className={errors.lastName && "input-error"}
+                                required
                             />
-                            {errors.lastName && <p className="menssageError">{errors.lastName}</p>}
+                            {errors.lastName && <p className="messageError" role="alert">{errors.lastName}</p>}
                         </div>
                     </div>
 
@@ -144,68 +146,74 @@ export function Form() {
                         autoComplete="email"
                         onChange={(event) => setEmail(event.target.value)}
                         className={errors.email && "input-error"}
+                        required
                     />
-                    {errors.email && <p className="menssageError">{errors.email}</p>}
+                    {errors.email && <p className="messageError" role="alert">{errors.email}</p>}
 
-                    <label htmlFor="option-enquiry" className="margin-bottom margin-top">
-                        Query Type <span className="required">*</span>
-                    </label>
-                    <div className="div-flex">
-                        <label htmlFor="option-enquiry" className="options margin-right margin-btm">
-                            <input
-                                type="radio"
-                                name="type"
-                                value="enquiry"
-                                id="option-enquiry"
-                                autoComplete="off"
-                                checked={type === "enquiry"}
-                                onChange={(event) => setType(event.target.value)}
-                            />
-                            General Enquiry
-                        </label>
+                    <fieldset className="margin-bottom margin-top">
+                        <legend className="margin-bottom">
+                            Query Type <span className="required">*</span>
+                        </legend>
 
-                        <label htmlFor="option-request" className="options">
-                            <input
-                                type="radio"
-                                name="type"
-                                value="support"
-                                id="option-request"
-                                autoComplete="off"
-                                checked={type === "support"}
-                                onChange={(event) => setType(event.target.value)}
-                            />
-                            Support Request
-                        </label>
-                    </div>
-                    {errors.type && <p className="menssageError">{errors.type}</p>}
+                        <div className="div-flex">
+                            <label className="options margin-right margin-btm">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="enquiry"
+                                    id="option-enquiry"
+                                    autoComplete="off"
+                                    checked={type === "enquiry"}
+                                    onChange={(event) => setType(event.target.value)}
+                                    required
+                                />
+                                General Enquiry
+                            </label>
 
-                    <label htmlFor="message" className="margin-bottom margin-top">
-                        Message <span className="required">*</span>
-                    </label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        autoComplete="off"
-                        value={message}
-                        onChange={(event) => setMessage(event.target.value)}
-                        className={errors.message && "input-error"}
-                    ></textarea>
-                    {errors.message && <p className="menssageError">{errors.message}</p>}
-
-                    <div className="div-select">
-                        <input type="checkbox" id="consent-checkbox" name="consent" checked={consent} onChange={(event) => setConsent(event.target.checked)} />
-                        <div id="consent">
-                            <label htmlFor="consent-checkbox">
-                                I consent to being contacted by the team{" "}
-                                <span className="required">*</span>
+                            <label className="options">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    value="support"
+                                    id="option-request"
+                                    autoComplete="off"
+                                    checked={type === "support"}
+                                    onChange={(event) => setType(event.target.value)}
+                                />
+                                Support Request
                             </label>
                         </div>
-                    </div>
-                    {errors.consent && <p className="menssageError">{errors.consent}</p>}
+                        </fieldset>
+                        {errors.type && <p className="messageError" role="alert">{errors.type}</p>}
 
-                    <button className="btn" type="submit">
-                        Submit
-                    </button>
+                        <label htmlFor="message" className="margin-bottom margin-top">
+                            Message <span className="required">*</span>
+                        </label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            autoComplete="off"
+                            value={message}
+                            onChange={(event) => setMessage(event.target.value)}
+                            className={errors.message && "input-error"}
+                            required
+                        ></textarea>
+                        {errors.message && <p className="messageError" role="alert">{errors.message}</p>}
+
+                        <div className="div-select">
+                            <input type="checkbox" id="consent-checkbox" name="consent" checked={consent} onChange={(event) => setConsent(event.target.checked)} required/>
+                            <div id="consent">
+                                <label htmlFor="consent-checkbox">
+                                    I consent to being contacted by the team{" "}
+                                    <span className="required">*</span>
+                                </label>
+                            </div>
+                        </div>
+                        {errors.consent && <p className="messageError" role="alert">{errors.consent}</p>}
+
+                        <button className="btn" type="submit">
+                            Submit
+                        </button>
                 </form>
 
             </main>

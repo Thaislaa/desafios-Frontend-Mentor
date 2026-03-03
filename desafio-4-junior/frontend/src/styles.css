@@ -24,7 +24,7 @@ h1 {
   padding-bottom: 20px;
 }
 
-label {
+label, legend {
   color: hsl(187, 24%, 22%);
   font-weight: 400;
   font-size: 16px;
@@ -142,8 +142,13 @@ input[type="radio"] {
   margin-top: 20px;
 }
 
-.btn:hover {
+.btn:focus {
+  outline-offset: 3px;
   background-color: #074A3E;
+}
+
+fieldset {
+  border: hsl(0, 0%, 100%);
 }
 
 textarea {
@@ -193,7 +198,7 @@ textarea {
   margin-right: 10px;
 }
 
-.menssageError {
+.messageError {
   color: hsl(0, 66%, 54%);
   margin-top: 10px;
   font-size: 14px;
